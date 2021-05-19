@@ -2,14 +2,14 @@
 
 namespace dio_app__console_crud_series_dotnet.classes
 {
-    public class Series : EntidadeBase
+    public class Serie : EntidadeBase
     {
         private Genero Genero { get; set; }
         private string Titulo { get; set; }
         private string Descricao { get; set; }
         private int Ano { get; set; }
 
-        public Series(Genero genero, string titulo, string descricao, int ano)
+        public Serie(Genero genero, string titulo, string descricao, int ano)
         {
             Genero = genero;
             Titulo = titulo;
