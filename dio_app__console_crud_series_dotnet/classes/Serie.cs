@@ -8,13 +8,17 @@ namespace dio_app__console_crud_series_dotnet.classes
         private string Titulo { get; set; }
         private string Descricao { get; set; }
         private int Ano { get; set; }
+        
+        private bool Excluido { get; set; }
 
-        public Serie(Genero genero, string titulo, string descricao, int ano)
+        public Serie(int id, Genero genero, string titulo, string descricao, int ano)
         {
+            Id = id;
             Genero = genero;
             Titulo = titulo;
             Descricao = descricao;
             Ano = ano;
+            Excluido = false;
         }
 
         public override string ToString()
@@ -30,6 +34,11 @@ namespace dio_app__console_crud_series_dotnet.classes
         public int retornaId()
         {
             return this.Id;
+        }
+
+        public void Excluir()
+        {
+            Excluido = true;
         }
     }
 }

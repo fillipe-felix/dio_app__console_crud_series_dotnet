@@ -5,34 +5,36 @@ namespace dio_app__console_crud_series_dotnet.classes
 {
     public class SerieRepositorio : IRepositorio<Serie>
     {
+
+        private List<Serie> listSerie = new List<Serie>();
         public List<Serie> Lista()
         {
-            throw new System.NotImplementedException();
+            return listSerie;
         }
 
         public Serie RetornaPorId(int id)
         {
-            throw new System.NotImplementedException();
+            return listSerie[id];
         }
 
         public void Insere(Serie entiada)
         {
-            throw new System.NotImplementedException();
+            listSerie.Add(entiada);
         }
 
         public void Excluir(int id)
         {
-            throw new System.NotImplementedException();
+            listSerie[id].Excluir();
         }
 
         public void Atualizar(int id, Serie entidade)
         {
-            throw new System.NotImplementedException();
+            listSerie[id] = entidade;
         }
 
         public int ProximoId()
         {
-            throw new System.NotImplementedException();
+            return listSerie.Count;
         }
     }
 }
