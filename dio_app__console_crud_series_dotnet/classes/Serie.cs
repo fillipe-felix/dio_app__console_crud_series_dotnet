@@ -23,7 +23,7 @@ namespace dio_app__console_crud_series_dotnet.classes
 
         public override string ToString()
         {
-            return $"Genero: {Genero}, Titulo: {Titulo}, Descricao: {Descricao}, Ano: {Ano}";
+            return $"Genero: {Genero}, Titulo: {Titulo}, Descricao: {Descricao}, Ano: {Ano}, Excluido: {Excluido}";
         }
 
         public string retornaTitulo()
@@ -34,6 +34,11 @@ namespace dio_app__console_crud_series_dotnet.classes
         public int retornaId()
         {
             return this.Id;
+        }
+        
+        public bool retornaExcluido()
+        {
+            return this.Excluido;
         }
 
         public void Excluir()

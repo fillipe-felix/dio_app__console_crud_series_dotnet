@@ -22,13 +22,13 @@ namespace dio_app__console_crud_series_dotnet
                         InserirSerie();
                         break;
                     case "3":
-                        // AtualizarSerie();
+                        AtualizarSerie();
                         break;
                     case "4":
-                        // ExcluirSerie();
+                        ExcluirSerie();
                         break;
                     case "5":
-                        // VisualizarSerie();
+                        VisualizarSerie();
                         break;
                     case "C" :
                         Console.Clear();
@@ -41,6 +41,54 @@ namespace dio_app__console_crud_series_dotnet
             Console.WriteLine("Obrigado por utilizar nossos serviços");
             Console.ReadLine();
         }
+
+        private static void VisualizarSerie()
+        {
+            Console.WriteLine("Digite o id da série: ");
+            int indiceSerie = int.Parse(Console.ReadLine());
+
+            var serie = repositorio.RetornaPorId(indiceSerie);
+            
+            Console.WriteLine(serie);
+        }
+
+        private static void ExcluirSerie()
+        {
+            Console.WriteLine("Digite o id da série: ");
+            int indiceSerie = int.Parse(Console.ReadLine());
+            
+            repositorio.Excluir(indiceSerie);
+        }
+
+        private static void AtualizarSerie()
+        {
+            Console.WriteLine("Digite o id da série: ");
+            int indiceSerie = int.Parse(Console.ReadLine());
+
+            foreach (var i in System.Enum.GetValues(typeof(Genero)))
+            {
+                Console.WriteLine("{0} - {1}", i, System.Enum.GetName(typeof(Genero), i));
+            }
+            Console.Write("Digite o genêro entre as opções acima: ");
+            int entradaGenero = int.Parse(Console.ReadLine());
+            
+            Console.Write("Digite o titulo da Série: ");
+            string entradaTitulo = Console.ReadLine();
+            
+            Console.Write("Digite o Ano de inicio da Série: ");
+            int entradaAno = int.Parse(Console.ReadLine());
+            
+            Console.Write("Digite a Descrição da Série: ");
+            string entradaDescricao = Console.ReadLine();
+
+            Serie novaSerie = new Serie(id: indiceSerie,
+                genero: (Genero) entradaGenero,
+                titulo: entradaTitulo,
+                ano: entradaAno,
+                descricao: entradaDescricao);
+            repositorio.Atualizar(indiceSerie, novaSerie);
+        }
+
         private static void listarSeries()
         {
             Console.WriteLine("listar séries");
@@ -55,7 +103,8 @@ namespace dio_app__console_crud_series_dotnet
 
             foreach (var serie in lista)
             {
-                Console.WriteLine("#D {0}: - {1}", serie.retornaId(), serie.retornaTitulo());
+                var excluido = serie.retornaExcluido();
+                Console.WriteLine("#D {0}: - {1} {2}", serie.retornaId(), serie.retornaTitulo(), (excluido ? "*Excluido*" : ""));
             }
         }
         
